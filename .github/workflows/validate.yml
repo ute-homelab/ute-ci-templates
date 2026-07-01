@@ -1,0 +1,22 @@
+name: Validate CI Templates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse all workflow YAML
+        run: |
+          python3 - <<'PY'
+          import pathlib, yaml
+          for path in pathlib.Path('.github/workflows').glob('*.y*ml'):
+              yaml.safe_load(path.read_text())
+          PY

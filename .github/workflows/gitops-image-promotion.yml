@@ -1,0 +1,83 @@
+name: GitOps Image Promotion
+
+on:
+  workflow_call:
+    inputs:
+      deployment-environment:
+        description: Protected GitHub Environment where promotion approval is enforced.
+        required: true
+        type: string
+      gitops-repository:
+        required: true
+        type: string
+      gitops-ref:
+        required: false
+        default: main
+        type: string
+      kustomization-path:
+        required: true
+        type: string
+      image-name:
+        required: true
+        type: string
+      image-ref:
+        description: Immutable image digest reference, ghcr.io/name@sha256:...
+        required: true
+        type: string
+      promotion-branch-prefix:
+        required: false
+        default: promotion
+        type: string
+    secrets:
+      GITOPS_REPOSITORY_TOKEN:
+        required: true
+
+jobs:
+  promote:
+    environment: ${{ inputs.deployment-environment }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout GitOps repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.gitops-repository }}
+          ref: ${{ inputs.gitops-ref }}
+          token: ${{ secrets.GITOPS_REPOSITORY_TOKEN }}
+          path: gitops
+
+      - name: Install Kustomize
+        uses: imranismail/setup-kustomize@v2
+
+      - name: Update image and validate rendered manifests
+        id: promotion
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd gitops/${{ inputs.kustomization-path }}
+          branch="${{ inputs.promotion-branch-prefix }}/${{ github.run_id }}"
+          git checkout -b "$branch"
+          kustomize edit set image "${{ inputs.image-name }}=${{ inputs.image-ref }}"
+          kustomize build . >/dev/null
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and open GitOps pull request
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITOPS_REPOSITORY_TOKEN }}
+        run: |
+          set -euo pipefail
+          cd gitops
+          git config user.name "ute-gitops-bot"
+          git config user.email "ute-gitops-bot@users.noreply.github.com"
+          git add "${{ inputs.kustomization-path }}/kustomization.yaml"
+          git commit -m "chore(gitops): promote ${{ inputs.image-name }}" \
+            -m "Image: ${{ inputs.image-ref }}"
+          git push origin "${{ steps.promotion.outputs.branch }}"
+          gh pr create \
+            --repo "${{ inputs.gitops-repository }}" \
+            --base "${{ inputs.gitops-ref }}" \
+            --head "${{ steps.promotion.outputs.branch }}" \
+            --title "chore(gitops): promote ${{ inputs.image-name }}" \
+            --body "Promotes immutable image reference: \`${{ inputs.image-ref }}\`."

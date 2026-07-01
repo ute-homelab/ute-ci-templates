@@ -1,0 +1,28 @@
+name: Client Compose Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_action:
+        description: deploy or rollback
+        type: choice
+        options: [deploy, rollback]
+        required: true
+        default: deploy
+
+jobs:
+  deploy:
+    uses: under-tree-e/ute-ci-templates/.github/workflows/ansible-deploy.yml@v1
+    with:
+      deployment-environment: production
+      runner-label: client-production-deploy
+      ansible-repository: under-tree-e/ute-ansible
+      ansible-ref: v1
+      playbook: playbooks/deploy-compose-release.yml
+      inventory-path: /opt/ute/inventory/client-production/hosts.yml
+    secrets:
+      ANSIBLE_PRIVATE_KEY: ${{ secrets.ANSIBLE_DEPLOY_PRIVATE_KEY }}
+      ANSIBLE_REPOSITORY_TOKEN: ${{ secrets.UTE_ANSIBLE_READ_TOKEN }}
+      GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      RUNTIME_ENV_CONTENT: ${{ secrets.UTE_RUNTIME_ENV_CONTENT }}

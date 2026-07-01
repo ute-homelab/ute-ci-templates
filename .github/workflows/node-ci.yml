@@ -1,0 +1,50 @@
+name: Node CI
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        type: string
+        required: false
+        default: "20"
+      working-directory:
+        type: string
+        required: false
+        default: "src"
+      run-integration-tests:
+        type: boolean
+        required: false
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  node-ci:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+      - name: Install
+        working-directory: ${{ inputs.working-directory }}
+        run: npm ci
+      - name: Lint
+        working-directory: ${{ inputs.working-directory }}
+        run: npm run lint
+      - name: Start and test
+        if: ${{ inputs.run-integration-tests }}
+        working-directory: ${{ inputs.working-directory }}
+        run: |
+          npm start > /tmp/app.log 2>&1 &
+          app_pid=$!
+          trap 'kill $app_pid || true; cat /tmp/app.log || true' EXIT
+          for i in $(seq 1 30); do
+            curl --fail --silent http://127.0.0.1:3000/healthz && break
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3000/readyz
+          npm test
