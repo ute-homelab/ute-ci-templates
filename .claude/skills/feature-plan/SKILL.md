@@ -33,8 +33,9 @@ feature folders.
    `observability.md`, `release-versioning.md`, etc.). List the
    applicable standards in `implementation-plan.md` and let them shape
    the plan.
-5. Write the six documents below using starter shapes from
-   `core/templates/feature/`.
+5. Write the six documents below using the starter shapes bundled with this
+   skill in its own `templates/` directory (installed alongside
+   `SKILL.md` — no separate opt-in step).
 6. Mark assumptions and open questions explicitly. No code changes.
 
 ## Required outputs
@@ -57,7 +58,8 @@ implementation would be unsafe or materially ambiguous.
 ## References
 
 - `core/sdlc/feature-planning.md` — full process
-- `core/templates/feature/` — starter document shapes
+- `templates/` (this skill's own directory) — starter document shapes,
+  installed automatically with this skill, same as any other skill file
 - `core/standards/` — check for the specific standards implicated by the
   feature (e.g. `configuration.md`, `security.md`, `api-integration.md`,
   `ci-cd.md`, `testing.md`, `observability.md`, `release-versioning.md`)

@@ -36,8 +36,9 @@ list: `core/sdlc/project-discovery.md`.
    `core/standards/repository-architecture.md`, and match the stack to the
    matching `core/archetypes/<type>/`. Record the applicable set — do not
    restate their content.
-7. Create/update the docs listed below using starter shapes from
-   `core/templates/project-docs/`.
+7. Create/update the docs listed below with real findings — there is no
+   starter template file; see `core/sdlc/project-discovery.md`'s "Expected
+   outputs" for the expected section shape of each doc.
 
 ## Required outputs
 
@@ -54,8 +55,7 @@ actions. Never read, print, or commit secret values — variable names only.
 
 ## References
 
-- `core/sdlc/project-discovery.md` — full process
-- `core/templates/project-docs/` — starter doc shapes
+- `core/sdlc/project-discovery.md` — full process, including expected section shape per doc
 - `core/archetypes/` — stack-specific overlays once the project type is known; pick the matching `<type>/` for this project's stack
 - `core/standards/ci-cd.md` — CI/CD ownership model this discovery classifies against
 - `core/standards/repository.md` — repo-shape expectations to check this project against
