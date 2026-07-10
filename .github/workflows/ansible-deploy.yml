@@ -12,7 +12,7 @@ on:
         type: string
       ansible-repository:
         required: false
-        default: under-tree-e/ute-ansible
+        default: ute-homelab/ute-ansible
         type: string
       ansible-ref:
         required: false

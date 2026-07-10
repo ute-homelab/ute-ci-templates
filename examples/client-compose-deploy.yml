@@ -12,11 +12,11 @@ on:
 
 jobs:
   deploy:
-    uses: under-tree-e/ute-ci-templates/.github/workflows/ansible-deploy.yml@v1
+    uses: ute-homelab/ute-ci-templates/.github/workflows/ansible-deploy.yml@v1
     with:
       deployment-environment: production
       runner-label: client-production-deploy
-      ansible-repository: under-tree-e/ute-ansible
+      ansible-repository: ute-homelab/ute-ansible
       ansible-ref: v1
       playbook: playbooks/deploy-compose-release.yml
       inventory-path: /opt/ute/inventory/client-production/hosts.yml
