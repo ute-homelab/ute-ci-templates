@@ -23,16 +23,25 @@ implementation:
    `core/sdlc/project-discovery.md`.
 2. **Architecture review** for changes crossing module/service boundaries or
    touching infrastructure — see `core/sdlc/architecture-review.md`.
-3. **Feature planning** — create/update `features/<name>/` per
+3. **Branch first** — create a dedicated branch per
+   `core/standards/git/branching.md` before creating or updating anything
+   under `features/<name>/`, or any other repository content. Never work
+   directly on `main` or on another task's active branch. Creating or
+   updating a feature's `spec.md`/`plan.md`/`audit.md` is itself work that
+   requires its own branch — planning documentation is not exempt.
+4. **Feature planning** — create/update `features/<name>/` per
    `core/sdlc/feature-planning.md` before writing code.
-4. **Implementation** — implement the reviewed plan per
+5. **Implementation** — implement the reviewed plan per
    `core/sdlc/implementation-pass.md`, in small reviewable steps.
-5. **Change audit** — self-audit the diff per `core/sdlc/change-audit.md`.
-6. **Test strategy** — per `core/sdlc/test-strategy.md`, scaled to risk.
-7. **Docs sync** — per `core/sdlc/docs-sync.md`.
-8. **Release readiness** — per `core/sdlc/release-readiness.md`, before
+6. **Change audit** — self-audit the diff per `core/sdlc/change-audit.md`.
+7. **Test strategy** — per `core/sdlc/test-strategy.md`, scaled to risk.
+8. **Docs sync** — per `core/sdlc/docs-sync.md`.
+9. **Release readiness** — per `core/sdlc/release-readiness.md`, before
    merging/shipping.
-9. **PR summary** — per `core/standards/git/pull-requests.md`.
+10. **Draft PR early, PR summary at handoff** — open a Draft PR as soon as
+    the first logical commit is pushed (per
+    `core/standards/git/pull-requests.md`), don't wait until the task is
+    finished; write the PR summary per `core/standards/git/pull-requests.md`.
 
 Not every change needs every stage — a one-line docs fix skips straight to
 implementation and docs sync. Scale to risk and size, per
@@ -96,10 +105,20 @@ be run manually. See `core/standards/testing.md` and
 ## Git / PR rules
 
 Follow `core/standards/git/branching.md`, `core/standards/git/commits.md`,
-and `core/standards/git/pull-requests.md`. Keep diffs small and reviewable.
-Do not force-push or rewrite history unless explicitly requested. Validate
-branch names and commit messages with `scripts/validate-branch-name.sh` /
-`scripts/validate-commit-message.sh` when available.
+and `core/standards/git/pull-requests.md`. Read all three before creating a
+branch or PR for non-trivial work.
+
+Any new feature, enhancement, fix, or documentation/planning task gets its
+own dedicated branch and an early Draft PR (opened once the first logical
+commit is pushed) — never work directly on `main`, and never on another
+task's active branch. This includes purely planning work: creating or
+updating a `features/<name>/spec.md`, `plan.md`, or `audit.md` already
+counts as work requiring its own branch.
+
+Keep diffs small and reviewable. Do not force-push or rewrite history
+unless explicitly requested. Validate branch names and commit messages with
+`scripts/validate-branch-name.sh` / `scripts/validate-commit-message.sh`
+when available.
 
 ## Vendor-skills policy
 

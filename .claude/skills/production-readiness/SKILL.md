@@ -6,7 +6,7 @@ description: Assess a service/app's operational posture for production-like usag
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/production-readiness/SKILL.md`, `adapters/codex/skills/production-readiness/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/production-readiness.md`. Read it before
+Canonical procedure: `.agents/core/sdlc/production-readiness.md`. Read it before
 running this skill.
 
 ## Goal
@@ -22,7 +22,7 @@ resource limits, dependency update process, existing runbooks.
 
 ## Process
 
-1. Read `core/sdlc/production-readiness.md`.
+1. Read `.agents/core/sdlc/production-readiness.md`.
 2. Check health checks, logging, metrics, tracing, alerting, backup/restore
    evidence, resource limits, dependency strategy, security posture,
    migration strategy, deployment observability, failure/rollback path, and
@@ -43,7 +43,7 @@ Overall posture summary, findings by area — including:
 - deployment observability
 - failure/rollback path
 - ownership of CI/CD and deployment automation (`docs/ci-cd.md`, see
-  `core/standards/ci-cd.md`)
+  `.agents/core/standards/ci-cd.md`)
 
 — failure scenario walkthrough, prioritized operational risks, runbook
 gaps.
@@ -56,10 +56,10 @@ Never read, print, or commit secrets.
 
 ## References
 
-- `core/sdlc/production-readiness.md` — full process
-- `core/sdlc/release-readiness.md` — the per-change counterpart (do not confuse the two)
-- `core/standards/ci-cd.md` — CI/CD and deployment automation ownership model
-- `core/standards/observability.md` — operational logging/metrics expectations
+- `.agents/core/sdlc/production-readiness.md` — full process
+- `.agents/core/sdlc/release-readiness.md` — the per-change counterpart (do not confuse the two)
+- `.agents/core/standards/ci-cd.md` — CI/CD and deployment automation ownership model
+- `.agents/core/standards/observability.md` — operational logging/metrics expectations
 
 ## Required Final Output: Agent Run Report
 

@@ -17,7 +17,9 @@ what Claude Code actually reads.
 - Never read, print, generate, or commit secrets.
 
 Full text: `core/standards/workflow.md`, `core/standards/security.md`,
-`core/standards/documentation.md`, `core/standards/testing.md`.
+`core/standards/documentation.md`, `core/standards/testing.md`,
+`core/standards/git/branching.md`, `core/standards/git/commits.md`,
+`core/standards/git/pull-requests.md`.
 
 ## Mandatory workflow for non-trivial work
 
@@ -26,16 +28,24 @@ Full text: `core/standards/workflow.md`, `core/standards/security.md`,
 2. Summarize the current state.
 3. Review architecture/deployment impact for major changes
    (`/architecture-review`).
-4. Create or update a feature/spec folder.
-5. Prepare an implementation plan.
-6. Implement in small steps.
-7. Run relevant validation, including a test strategy for non-trivial work
+4. Create a dedicated branch (per `core/standards/git/branching.md`) —
+   before creating or updating a feature/spec folder or any other
+   repository content. Never work directly on `main` or on another task's
+   active branch. This applies even when the work is only planning
+   documentation (a `features/<name>/spec.md`/`plan.md`/`audit.md`); see
+   `.claude/rules/git-workflow.md`.
+5. Create or update a feature/spec folder.
+6. Prepare an implementation plan.
+7. Implement in small steps.
+8. Run relevant validation, including a test strategy for non-trivial work
    (`/test-strategy`).
-8. Audit the diff.
-9. Sync docs.
-10. Check release readiness before merging/shipping
+9. Audit the diff.
+10. Sync docs.
+11. Check release readiness before merging/shipping
     (`/release-readiness`).
-11. Prepare PR summary.
+12. Once the first logical commit exists, push and open an early Draft PR
+    (per `core/standards/git/pull-requests.md`), then prepare the PR
+    summary (`/pr-summary`).
 
 ## Recommended skills
 

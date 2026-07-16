@@ -6,7 +6,7 @@ description: Define a realistic, risk-prioritized test strategy (unit/integratio
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/test-strategy/SKILL.md`, `adapters/codex/skills/test-strategy/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/test-strategy.md`. Read it before running
+Canonical procedure: `.agents/core/sdlc/test-strategy.md`. Read it before running
 this skill.
 
 ## Goal
@@ -21,8 +21,8 @@ from `package.json`/`Makefile`/CI, test data fixtures, affected code areas.
 
 ## Process
 
-1. Read `core/sdlc/test-strategy.md` for the planning process, and apply
-   `core/standards/testing.md` for the baseline testing expectations it
+1. Read `.agents/core/sdlc/test-strategy.md` for the planning process, and apply
+   `.agents/core/standards/testing.md` for the baseline testing expectations it
    sets.
 2. If the project matches a known archetype, read that archetype's
    `validation.md` testing expectations first — frontend/backend/app-vs-
@@ -46,9 +46,9 @@ actions. Never use real secrets/PII as test data.
 
 ## References
 
-- `core/sdlc/test-strategy.md` — full process
-- `core/standards/testing.md` — baseline testing expectations
-- `core/archetypes/` — stack-specific testing expectations (`validation.md`), if applicable
+- `.agents/core/sdlc/test-strategy.md` — full process
+- `.agents/core/standards/testing.md` — baseline testing expectations
+- `.agents/core/archetypes/` — stack-specific testing expectations (`validation.md`), if applicable
 
 ## Required Final Output: Agent Run Report
 

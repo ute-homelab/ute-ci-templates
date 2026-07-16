@@ -6,7 +6,7 @@ description: Independently audit implemented changes against a feature folder/sp
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/change-audit/SKILL.md`, `adapters/codex/skills/change-audit/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/change-audit.md`. Read it before running
+Canonical procedure: `.agents/core/sdlc/change-audit.md`. Read it before running
 this skill.
 
 ## Goal
@@ -20,12 +20,12 @@ Feature folder, current git diff/status, acceptance criteria.
 
 ## Process
 
-1. Read `core/sdlc/change-audit.md` and the feature folder.
+1. Read `.agents/core/sdlc/change-audit.md` and the feature folder.
 2. Inspect the diff; check each acceptance criterion.
 3. Check security, compatibility, tests, docs, deployment, and rollback
-   risk using `core/standards/git/code-review.md`.
+   risk using `.agents/core/standards/git/code-review.md`.
 4. Check the diff against the "Forbidden Patterns" and "Agent Must Not
-   Do" sections of every applicable `core/standards/*` file (e.g.
+   Do" sections of every applicable `.agents/core/standards/*` file (e.g.
    `security.md`, `ci-cd.md`, `testing.md`, `git/*`) — not only the
    feature's acceptance criteria. A change can satisfy every acceptance
    criterion and still violate a standard's forbidden patterns.
@@ -44,9 +44,9 @@ print, or commit secrets found in the diff.
 
 ## References
 
-- `core/sdlc/change-audit.md` — full process
-- `core/standards/git/code-review.md` — review checklist
-- `core/standards/*` — check each applicable file's "Forbidden Patterns"
+- `.agents/core/sdlc/change-audit.md` — full process
+- `.agents/core/standards/git/code-review.md` — review checklist
+- `.agents/core/standards/*` — check each applicable file's "Forbidden Patterns"
   and "Agent Must Not Do" sections against the diff (see
   `docs/standards-to-agent-guidance.md` for how standards map to skills)
 

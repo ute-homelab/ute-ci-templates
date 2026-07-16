@@ -6,7 +6,7 @@ description: Analyze the result of an agent run (typically another skill's Agent
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/standards-gap-audit/SKILL.md`, `adapters/codex/skills/standards-gap-audit/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/standards-gap-audit.md`. Read it before
+Canonical procedure: `.agents/core/sdlc/standards-gap-audit.md`. Read it before
 running this skill — this file only adds the Claude-specific wrapper.
 
 ## Goal
@@ -22,13 +22,13 @@ right layer instead of being silently re-guessed on every run — see
 
 The Agent Run Report(s) from the run(s) being audited (or the raw output if
 no report exists), the skill outputs themselves, the project's own
-`docs/*.md`, and the relevant `core/standards/`, `core/sdlc/`,
-`core/archetypes/`, and `skills/` files. Full list:
-`core/sdlc/standards-gap-audit.md`.
+`docs/*.md`, and the relevant `.agents/core/standards/`, `.agents/core/sdlc/`,
+`.agents/core/archetypes/`, and `skills/` files. Full list:
+`.agents/core/sdlc/standards-gap-audit.md`.
 
 ## Process
 
-1. Read `core/sdlc/standards-gap-audit.md` in full.
+1. Read `.agents/core/sdlc/standards-gap-audit.md` in full.
 2. Pull every "Missing input", "Assumption made", "Project documentation
    gap", and "UTE standards gap" line out of the Agent Run Report(s) under
    audit.
@@ -37,8 +37,8 @@ no report exists), the skill outputs themselves, the project's own
    already covers the case.
 4. Separate anything that isn't a standards gap: it belongs to the project
    itself, or to a different UTE repository (CI/CD template repo,
-   deployment/infra repo — see `core/standards/ci-cd.md`).
-5. Do not edit `skills/`, `core/`, or `core/archetypes/` as part of this
+   deployment/infra repo — see `.agents/core/standards/ci-cd.md`).
+5. Do not edit `skills/`, `.agents/core/`, or `.agents/core/archetypes/` as part of this
    audit unless explicitly asked to apply a fix afterward.
 
 ## Gap types
@@ -47,13 +47,13 @@ no report exists), the skill outputs themselves, the project's own
   enough guidance to know what was missing. Fix: the project's `docs/`.
 - `agent-skill-gap` — a skill's process/outputs are ambiguous or
   incomplete. Fix: `skills/<name>/SKILL.md`.
-- `core-standard-gap` — a policy question `core/standards/` should answer
-  doesn't, or is ambiguous. Fix: `core/standards/<name>.md`.
+- `core-standard-gap` — a policy question `.agents/core/standards/` should answer
+  doesn't, or is ambiguous. Fix: `.agents/core/standards/<name>.md`.
 - `archetype-gap` — no archetype matches the stack, or an existing one is
-  wrong/incomplete. Fix: `core/archetypes/<type>/`.
+  wrong/incomplete. Fix: `.agents/core/archetypes/<type>/`.
 - `ci-cd-boundary-gap` — confusion about pipeline ownership vs.
   `ute-ci-templates`/`ute-jenkins-library`/`ute-ansible`/`ute-automation`/
-  `ute-infra`/`ute-gitops`. Fix: `core/standards/ci-cd.md`.
+  `ute-infra`/`ute-gitops`. Fix: `.agents/core/standards/ci-cd.md`.
 - `vendor-skill-gap` — a third-party skill/pattern would close it and is
   worth reviewing for import. Fix: `docs/vendor-skill-mapping.md`,
   `vendor-skills/`.
@@ -70,9 +70,9 @@ no report exists), the skill outputs themselves, the project's own
 
 ## Recommended Updates
 
-1. Update `core/archetypes/...`
+1. Update `.agents/core/archetypes/...`
 2. Update `skills/.../SKILL.md`
-3. Update `core/standards/...`
+3. Update `.agents/core/standards/...`
 
 ## Not a Standards Gap
 
@@ -99,7 +99,7 @@ followed by:
 - Confidence: high / medium / low
 - Inputs used:
 - Applicable standards used: standards consulted to classify gaps (e.g.
-  `core/standards/ci-cd.md` for boundary calls)
+  `.agents/core/standards/ci-cd.md` for boundary calls)
 - Missing inputs:
 - Assumptions made:
 - Project documentation gaps:
@@ -112,18 +112,18 @@ followed by:
 
 ## Safety constraints
 
-Read-only analysis. Do not modify `skills/`, `core/`, or
-`core/archetypes/` unless explicitly asked to apply the fix as a follow-up.
-Check `core/standards/ci-cd.md` before labeling anything
+Read-only analysis. Do not modify `skills/`, `.agents/core/`, or
+`.agents/core/archetypes/` unless explicitly asked to apply the fix as a follow-up.
+Check `.agents/core/standards/ci-cd.md` before labeling anything
 `ci-cd-boundary-gap` or `not-agent-standards`. Never invent a gap to pad the
 report — if evidence is thin, say so and lower the priority instead.
 
 ## References
 
-- `core/sdlc/standards-gap-audit.md` — full process and gap-type table
+- `.agents/core/sdlc/standards-gap-audit.md` — full process and gap-type table
 - `docs/evaluation-loop.md` — where this fits in a pilot/evaluation pass
-- `core/standards/ci-cd.md` — CI/CD ownership boundary
+- `.agents/core/standards/ci-cd.md` — CI/CD ownership boundary
 - `docs/vendor-skills-policy.md` — process for `vendor-skill-gap` findings
 - `docs/standards-to-agent-guidance.md` — the "reference, don't duplicate"
-  rule this audit's fix targets (`core/standards/`, `core/archetypes/`,
+  rule this audit's fix targets (`.agents/core/standards/`, `.agents/core/archetypes/`,
   `skills/`) must keep following

@@ -6,7 +6,7 @@ description: Create a UTE-compatible feature folder from an idea, change request
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/feature-plan/SKILL.md`, `adapters/codex/skills/feature-plan/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/feature-planning.md`. Read it before running
+Canonical procedure: `.agents/core/sdlc/feature-planning.md`. Read it before running
 this skill.
 
 ## Goal
@@ -21,15 +21,15 @@ feature folders.
 
 ## Process
 
-1. Read `core/sdlc/feature-planning.md` in full.
+1. Read `.agents/core/sdlc/feature-planning.md` in full.
 2. Read project `CLAUDE.md`/`AGENTS.md` and relevant `docs/*.md`.
 3. Inspect existing feature folders to follow naming/format.
-4. Identify which `core/standards/*` files the proposed feature touches
+4. Identify which `.agents/core/standards/*` files the proposed feature touches
    before drafting `implementation-plan.md` — e.g. config changes ->
-   `core/standards/configuration.md`, auth/permissions ->
-   `core/standards/security.md`, external API integration ->
-   `core/standards/api-integration.md` (see other files in
-   `core/standards/` for further matches: `ci-cd.md`, `testing.md`,
+   `.agents/core/standards/configuration.md`, auth/permissions ->
+   `.agents/core/standards/security.md`, external API integration ->
+   `.agents/core/standards/api-integration.md` (see other files in
+   `.agents/core/standards/` for further matches: `ci-cd.md`, `testing.md`,
    `observability.md`, `release-versioning.md`, etc.). List the
    applicable standards in `implementation-plan.md` and let them shape
    the plan.
@@ -57,10 +57,10 @@ implementation would be unsafe or materially ambiguous.
 
 ## References
 
-- `core/sdlc/feature-planning.md` — full process
+- `.agents/core/sdlc/feature-planning.md` — full process
 - `templates/` (this skill's own directory) — starter document shapes,
   installed automatically with this skill, same as any other skill file
-- `core/standards/` — check for the specific standards implicated by the
+- `.agents/core/standards/` — check for the specific standards implicated by the
   feature (e.g. `configuration.md`, `security.md`, `api-integration.md`,
   `ci-cd.md`, `testing.md`, `observability.md`, `release-versioning.md`)
 

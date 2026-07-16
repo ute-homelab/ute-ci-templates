@@ -6,8 +6,8 @@ description: Prepare a concise Pull Request summary for UTE projects, including 
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/pr-summary/SKILL.md`, `adapters/codex/skills/pr-summary/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/standards/git/pull-requests.md`. Read it before
-running this skill (there is no dedicated `core/sdlc/` file for this one —
+Canonical procedure: `.agents/core/standards/git/pull-requests.md`. Read it before
+running this skill (there is no dedicated `.agents/core/sdlc/` file for this one —
 it's Git/PR process, not a lifecycle stage).
 
 ## Goal
@@ -20,10 +20,10 @@ Current diff, feature folder (if one exists), test/validation results.
 
 ## Process
 
-1. Read and apply `core/standards/git/pull-requests.md`.
+1. Read and apply `.agents/core/standards/git/pull-requests.md`.
 2. When producing a GitHub-ready PR description, write directly to the "PR
    description — required sections" list in
-   `core/standards/git/pull-requests.md` rather than inventing sections —
+   `.agents/core/standards/git/pull-requests.md` rather than inventing sections —
    this repo does not ship a `.github/` PR template file; a project's own
    PR template (if any) is that project's own concern.
 3. Summarize purpose, changes, verification actually run, docs impact,
@@ -55,7 +55,7 @@ the diff.
 
 ## References
 
-- `core/standards/git/pull-requests.md` — required sections and rationale
+- `.agents/core/standards/git/pull-requests.md` — required sections and rationale
 
 ## Required Final Output: Agent Run Report
 

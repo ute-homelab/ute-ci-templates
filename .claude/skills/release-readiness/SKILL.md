@@ -6,7 +6,7 @@ description: Check whether a feature, PR, or project is ready for release — ac
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/release-readiness/SKILL.md`, `adapters/codex/skills/release-readiness/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/release-readiness.md`. Read it before
+Canonical procedure: `.agents/core/sdlc/release-readiness.md`. Read it before
 running this skill.
 
 ## Goal
@@ -21,7 +21,7 @@ migrations, config/env changes, existing rollback plan, changelog location.
 
 ## Process
 
-1. Read `core/sdlc/release-readiness.md`.
+1. Read `.agents/core/sdlc/release-readiness.md`.
 2. Check acceptance criteria, test status, docs sync, migration/config
    risk, rollback plan status.
 3. Check the CI/CD ownership gate — see below.
@@ -32,14 +32,14 @@ migrations, config/env changes, existing rollback plan, changelog location.
 
 ## CI/CD ownership gate
 
-Pipeline ownership must be clear before release (`core/standards/ci-cd.md`):
+Pipeline ownership must be clear before release (`.agents/core/standards/ci-cd.md`):
 GitHub Actions via `ute-ci-templates`, Jenkins via `ute-jenkins-library`, or
 a documented project-specific exception. Absent one of these, do not return
 a plain "ready" verdict.
 
 ## Release versioning gate
 
-Apply `core/standards/release-versioning.md` explicitly before returning a
+Apply `.agents/core/standards/release-versioning.md` explicitly before returning a
 "ready" verdict: tags, RC tags, SemVer compliance, and the
 release-from-main-only rule. Absent compliance, do not return a plain
 "ready" verdict.
@@ -52,7 +52,7 @@ release-from-main-only rule. Absent compliance, do not return a plain
 - rollback documented
 - release notes prepared
 - docs synced
-- versioning/tagging complies with `core/standards/release-versioning.md`
+- versioning/tagging complies with `.agents/core/standards/release-versioning.md`
 
 ## Required outputs
 
@@ -66,10 +66,10 @@ suspected secret value.
 
 ## References
 
-- `core/sdlc/release-readiness.md` — full process
-- `core/sdlc/rollback-plan.md` — produces the rollback plan this checks for
-- `core/standards/ci-cd.md` — CI/CD ownership gate this checks against
-- `core/standards/release-versioning.md` — release versioning gate this
+- `.agents/core/sdlc/release-readiness.md` — full process
+- `.agents/core/sdlc/rollback-plan.md` — produces the rollback plan this checks for
+- `.agents/core/standards/ci-cd.md` — CI/CD ownership gate this checks against
+- `.agents/core/standards/release-versioning.md` — release versioning gate this
   checks against (tags, RC tags, SemVer, release-from-main-only)
 
 ## Required Final Output: Agent Run Report

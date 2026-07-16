@@ -6,7 +6,7 @@ description: Analyze a new or existing project to establish baseline understandi
 
 > Canonical portable skill (agent-neutral). Adapter copies: `adapters/claude/.claude/skills/project-discovery/SKILL.md`, `adapters/codex/skills/project-discovery/SKILL.md` — keep in sync with this file. See `docs/portable-skills.md`.
 
-Canonical procedure: `core/sdlc/project-discovery.md`. Read it before running
+Canonical procedure: `.agents/core/sdlc/project-discovery.md`. Read it before running
 this skill — this file only adds the Claude-specific wrapper.
 
 ## Goal
@@ -18,26 +18,26 @@ structure, build/test/deploy tooling, and where documentation is missing.
 
 Repo layout, package manifests, CI/CD config, Dockerfiles, infra-as-code,
 `.env.example` (names only), existing `docs/`, existing `features/`. Full
-list: `core/sdlc/project-discovery.md`.
+list: `.agents/core/sdlc/project-discovery.md`.
 
 ## Process
 
-1. Read `core/sdlc/project-discovery.md` in full.
+1. Read `.agents/core/sdlc/project-discovery.md` in full.
 2. Walk the repo, confirm stack/framework from manifests (not folder names).
 3. Extract real build/test/lint/deploy commands — never invent ones.
 4. Compare findings against existing `docs/*.md`; note gaps as open
    questions, not guesses.
 5. Run CI/CD discovery — classify the project's CI/CD model and recommended
    pipeline owner per the "CI/CD discovery" section of
-   `core/sdlc/project-discovery.md`. Do not propose or scaffold pipeline
+   `.agents/core/sdlc/project-discovery.md`. Do not propose or scaffold pipeline
    files; classify only.
-6. Detect which `core/standards/*` and `core/archetypes/*` apply to this
-   project: check repo shape against `core/standards/repository.md` and
-   `core/standards/repository-architecture.md`, and match the stack to the
-   matching `core/archetypes/<type>/`. Record the applicable set — do not
+6. Detect which `.agents/core/standards/*` and `.agents/core/archetypes/*` apply to this
+   project: check repo shape against `.agents/core/standards/repository.md` and
+   `.agents/core/standards/repository-architecture.md`, and match the stack to the
+   matching `.agents/core/archetypes/<type>/`. Record the applicable set — do not
    restate their content.
 7. Create/update the docs listed below with real findings — there is no
-   starter template file; see `core/sdlc/project-discovery.md`'s "Expected
+   starter template file; see `.agents/core/sdlc/project-discovery.md`'s "Expected
    outputs" for the expected section shape of each doc.
 
 ## Required outputs
@@ -55,11 +55,11 @@ actions. Never read, print, or commit secret values — variable names only.
 
 ## References
 
-- `core/sdlc/project-discovery.md` — full process, including expected section shape per doc
-- `core/archetypes/` — stack-specific overlays once the project type is known; pick the matching `<type>/` for this project's stack
-- `core/standards/ci-cd.md` — CI/CD ownership model this discovery classifies against
-- `core/standards/repository.md` — repo-shape expectations to check this project against
-- `core/standards/repository-architecture.md` — repo-architecture expectations to check this project against
+- `.agents/core/sdlc/project-discovery.md` — full process, including expected section shape per doc
+- `.agents/core/archetypes/` — stack-specific overlays once the project type is known; pick the matching `<type>/` for this project's stack
+- `.agents/core/standards/ci-cd.md` — CI/CD ownership model this discovery classifies against
+- `.agents/core/standards/repository.md` — repo-shape expectations to check this project against
+- `.agents/core/standards/repository-architecture.md` — repo-architecture expectations to check this project against
 
 ## Required Final Output: Agent Run Report
 
