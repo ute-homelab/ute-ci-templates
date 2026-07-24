@@ -65,7 +65,14 @@ jobs:
         shell: bash
         run: |
           echo "ref=ghcr.io/${{ inputs.image-name }}@${{ steps.build.outputs.digest }}" >> "$GITHUB_OUTPUT"
+      # Best-effort: build provenance attestations require a feature this
+      # org's current billing plan doesn't have for private repos
+      # ("Feature not available for the ute-homelab organization" --
+      # found for real on ute-jenkins's first-ever release). The image
+      # push above already succeeded by this point; don't fail the whole
+      # release over an attestation that can't be created yet.
       - uses: actions/attest-build-provenance@v2
+        continue-on-error: true
         with:
           subject-name: ghcr.io/${{ inputs.image-name }}
           subject-digest: ${{ steps.build.outputs.digest }}
