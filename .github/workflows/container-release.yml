@@ -15,6 +15,16 @@ on:
         required: false
         default: .
         type: string
+      trivyignores:
+        description: >-
+          Comma-separated relative path(s) to a .trivyignore file for
+          this image. Trivy's own default (look in the runner's working
+          directory, i.e. the repo root) will NOT find an ignore file
+          that lives next to a Dockerfile in a subdirectory -- pass this
+          explicitly when the image's Dockerfile isn't at the repo root.
+        required: false
+        default: ""
+        type: string
     outputs:
       image-ref:
         description: Immutable image reference, including digest.
@@ -59,6 +69,7 @@ jobs:
           image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
           severity: HIGH,CRITICAL
           exit-code: "1"
+          trivyignores: ${{ inputs.trivyignores }}
       - name: Push image
         run: docker push --all-tags "ghcr.io/${{ inputs.image-name }}"
       - id: image
