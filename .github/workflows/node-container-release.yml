@@ -111,7 +111,7 @@ jobs:
       # namespaced consumer of this workflow doesn't hit the same
       # release-blocking failure. The image push above already succeeded
       # by this point either way.
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v4
         continue-on-error: true
         with:
           subject-name: ghcr.io/${{ inputs.image-name }}
