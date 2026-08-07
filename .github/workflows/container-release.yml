@@ -82,7 +82,7 @@ jobs:
       # found for real on ute-jenkins's first-ever release). The image
       # push above already succeeded by this point; don't fail the whole
       # release over an attestation that can't be created yet.
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v4
         continue-on-error: true
         with:
           subject-name: ghcr.io/${{ inputs.image-name }}
